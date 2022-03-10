@@ -5,4 +5,3 @@ INNER JOIN contactos ON contactos.`id` = sc.`id_contacto`
 INNER JOIN ciudades ON sucursal.`id_ciudad_u` = ciudades.`id`
 INNER JOIN departamentos ON ciudades.`id_departamento`=departamentos.`id`
 INNER JOIN paises ON departamentos.`id_pais` = paises.`id`
-GROUP BY sc.`id_sucursal`
