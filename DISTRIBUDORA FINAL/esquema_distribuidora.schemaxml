@@ -6,17 +6,17 @@
 <canvas zoom="75">
 <tables>
 <table name="contactos" view="colnames">
-<left>3</left>
-<top>110</top>
+<left>9</left>
+<top>116</top>
 <width>119</width>
 <height>110</height>
 <sql_create_table>CREATE TABLE `contactos` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL,
   `identificacion` varchar(30) NOT NULL,
   `nom_representante` varchar(60) NOT NULL,
   `contacto_principa` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3001 DEFAULT CHARSET=utf8</sql_create_table>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="departamentos" view="colnames">
 <left>341</left>
@@ -30,7 +30,7 @@
   PRIMARY KEY (`id`),
   KEY `id_pais` (`id_pais`),
   CONSTRAINT `departamentos_ibfk_1` FOREIGN KEY (`id_pais`) REFERENCES `paises` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="paises" view="colnames">
 <left>129</left>
@@ -42,7 +42,7 @@
   `n_pais` varchar(50) NOT NULL,
   `codigo` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="personal" view="colnames">
 <left>428</left>
@@ -102,19 +102,16 @@
 <height>146</height>
 <sql_create_table>CREATE TABLE `sucursal` (
   `id` int(10) NOT NULL,
-  `id_ciudad_ubica` int(10) NOT NULL,
+  `id_ciudad_u` int(10) NOT NULL,
   `id_zona` int(10) NOT NULL,
   `direccion` varchar(50) NOT NULL,
   `nombre_encargado` varchar(50) DEFAULT NULL,
   `contacto_encargado` varchar(50) DEFAULT NULL,
-  `id_pais` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_ubicacion` (`id_ciudad_ubica`),
+  KEY `id_ubicacion` (`id_ciudad_u`),
   KEY `id_zona` (`id_zona`),
-  KEY `id_pais` (`id_pais`),
-  CONSTRAINT `sucursal_ibfk_1` FOREIGN KEY (`id_ciudad_ubica`) REFERENCES `ciudades` (`id`),
   CONSTRAINT `sucursal_ibfk_3` FOREIGN KEY (`id_zona`) REFERENCES `zona` (`id`),
-  CONSTRAINT `sucursal_ibfk_4` FOREIGN KEY (`id_pais`) REFERENCES `paises` (`id`)
+  CONSTRAINT `sucursal_ibfk_4` FOREIGN KEY (`id_ciudad_u`) REFERENCES `ciudades` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="sucursal_cliente" view="colnames">
@@ -136,16 +133,16 @@
 <table name="ciudades" view="colnames">
 <left>621</left>
 <top>327</top>
-<width>73</width>
+<width>140</width>
 <height>97</height>
 <sql_create_table>CREATE TABLE `ciudades` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `n_ciudad` varchar(50) NOT NULL,
   `id_departamento` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_departamento` (`id_departamento`),
   CONSTRAINT `ciudades_ibfk_1` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=1121 DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="zona" view="colnames">
 <left>318</left>
